@@ -1,0 +1,112 @@
+/******************************
+Gallery
+*******************************/
+
+.format-gallery .entry-header {
+    margin: .2em;
+    margin-top: 3.125em;
+    position: relative;
+}
+
+.format-gallery .entry-header:first-of-type {
+    margin-top: 0;
+}
+
+.format-gallery .entry-header .gallery-thumb {
+    float: left;
+}
+
+.gallery-thumbs {
+    margin: 0;
+    padding: 0;
+}
+
+.gallery-thumbs li {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    line-height: 0;
+    list-style-type: none;
+    max-width: 100%;
+    padding: .2em;
+}
+
+.format-gallery :not(.gallery-thumbs) + .entry-content {
+    margin-top: 1.5em;
+}
+
+.format-gallery .gallery-thumbs + .entry-content {
+    margin-top: .7em;
+}
+
+.gallery-thumbs li img {
+    line-height: 1;
+}
+
+.gallery-category article {
+    float: left;
+}
+
+.gallery-thumb {
+    line-height: 0;
+}
+
+.gallery-thumb img {
+    line-height: 1;
+}
+
+.gallery-item {
+    display: block;
+    float: left;
+    line-height: 0;
+    padding: .2em;
+}
+
+.gallery-item img {
+    line-height: 1;
+}
+
+.gallery-caption {
+    display: none;
+}
+
+.single-format-gallery .entry-title,
+.single-format-gallery .entry-content {
+    max-width: 100%;
+}
+
+.single-format-gallery .entry-header {
+    margin-bottom: 1.5em;
+}
+
+.single-format-gallery .entry-content .gallery:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.single-format-gallery .entry-content :not(.gallery) {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.single-format-gallery .entry-content .gallery * {
+    max-width: 100%;
+}
+
+.gallery-columns-1 .gallery-item,
+.gallery-columns-2 .gallery-item:nth-of-type(2n-1),
+.gallery-columns-3 .gallery-item:nth-of-type(3n-2),
+.gallery-columns-4 .gallery-item:nth-of-type(4n-3),
+.gallery-columns-5 .gallery-item:nth-of-type(5n-4),
+.gallery-columns-6 .gallery-item:nth-of-type(6n-5),
+.gallery-columns-7 .gallery-item:nth-of-type(7n-6),
+.gallery-columns-8 .gallery-item:nth-of-type(8n-7),
+.gallery-columns-9 .gallery-item:nth-of-type(9n-8),
+.gallery-columns-10 .gallery-item:nth-of-type(10n-9) {
+    display: block;
+    clear: left;
+}

@@ -1,0 +1,21 @@
+
+/******************************
+Pagination
+*******************************/
+.navigation.pagination:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.navigation.pagination ul {
+    padding: 0 16px;
+}
+
+.navigation.pagination li {
+    display: block;
+    float: left;
+    list-style-type: none;
+    margin: .2em;
+    padding: .4em;
+}

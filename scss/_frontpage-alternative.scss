@@ -1,0 +1,33 @@
+/******************************
+Alternative front page template
+*******************************/
+
+.gallery-category.child:before {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.gallery-category .gallery-thumb {
+    margin: 0;
+}
+
+.gallery-category a {
+    margin: .2em;
+}
+
+.read-more {
+    margin: .2em;
+}
+
+.read-more a {
+    background: #000000;
+    background: rgba(0, 0, 0, .8);
+    color: #ffffff;
+    display: table-cell;
+    font-size: 1.2em;
+    height: 200px;
+    margin: 0;
+    padding: 0 .4em;
+    vertical-align: middle;
+}
