@@ -3,14 +3,14 @@
 /**
  * Recent_Galleries widget class
  */
-class Bornholm_Recent_Galleries extends WP_Widget {
+class Chilli_Recent_Galleries extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(
 			'classname'   => 'widget_recent_galleries',
-			'description' => _x( 'Your site’s most recent galleries.', 'Description of the recent galleries widget', 'bornholm' )
+			'description' => _x( 'Your site’s most recent galleries.', 'Description of the recent galleries widget', 'chillitheme' )
 		);
-		parent::__construct( 'recent-galleries', _x( 'Recent Galleries', 'Name of the recent galleries widget', 'bornholm' ), $widget_ops );
+		parent::__construct( 'recent-galleries', _x( 'Recent Galleries', 'Name of the recent galleries widget', 'chillitheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -50,14 +50,14 @@ class Bornholm_Recent_Galleries extends WP_Widget {
 			while ( $result->have_posts() ) {
 				$result->the_post();
 				$post   = get_post( get_the_ID() );
-				$images = bornholm_get_gallery_images( $post->ID );
+				$images = chilli_get_gallery_images( $post->ID );
 				if ( $images ) {
 					$hide_gallery_titles_on_recent_galleries_widget = get_theme_mod( 'hide_gallery_titles_on_recent_galleries_widget' ); ?>
 					<div>
 						<?php if ( $hide_gallery_titles_on_recent_galleries_widget == 1 ) {
-							bornholm_gallery_header( '', $images, 'thumbnail', $post );
+							chilli_gallery_header( '', $images, 'thumbnail', $post );
 						} else {
-							bornholm_gallery_header( 'h4', $images, 'thumbnail', $post );
+							chilli_gallery_header( 'h4', $images, 'thumbnail', $post );
 						} ?>
 					</div>
 				<?php }
@@ -81,13 +81,13 @@ class Bornholm_Recent_Galleries extends WP_Widget {
 		$title  = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number = isset( $instance['number'] ) ? absint( $instance['number'] ) : 2;
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bornholm' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'chillitheme' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
 			       name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>"/>
 		</p>
 
 		<p><label
-				for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of galleries to show:', 'bornholm' ); ?></label>
+				for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of galleries to show:', 'chillitheme' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>"
 			       name="<?php echo $this->get_field_name( 'number' ); ?>" type="number"
 			       value="<?php echo $number; ?>"/></p>

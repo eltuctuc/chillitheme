@@ -4,8 +4,8 @@ update_option( 'thumbnail_size_w', 9999 );
 update_option( 'thumbnail_size_h', 200 );
 update_option( 'thumbnail_crop', 0 );
 update_option( 'large_size_w', 800 );
-add_image_size( 'bornholm_large_gallery_image_for_single_view', 1592, 9999, false );
-add_image_size( 'bornholm_large_gallery_image_for_blog_view', 951, 9999, false );
+add_image_size( 'chilli_large_gallery_image_for_single_view', 1592, 9999, false );
+add_image_size( 'chilli_large_gallery_image_for_blog_view', 951, 9999, false );
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800;
@@ -14,20 +14,20 @@ if ( ! isset( $content_width ) ) {
 /**
  * Load the language files
  */
-function bornholm_load_translation() {
-	if ( ( ! defined( 'DOING_AJAX' ) && ! 'DOING_AJAX' ) || ! bornholm_is_login_page() || ! bornholm_is_wp_comments_post() ) {
-		load_theme_textdomain( 'bornholm' );
+function chilli_load_translation() {
+	if ( ( ! defined( 'DOING_AJAX' ) && ! 'DOING_AJAX' ) || ! chilli_is_login_page() || ! chilli_is_wp_comments_post() ) {
+		load_theme_textdomain( 'chillitheme' );
 	}
 }
 
-add_action( 'after_setup_theme', 'bornholm_load_translation' );
+add_action( 'after_setup_theme', 'chilli_load_translation' );
 
 /**
  * Check if we are on the login page
  *
  * @return bool
  */
-function bornholm_is_login_page() {
+function chilli_is_login_page() {
 	return in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) );
 }
 
@@ -36,14 +36,14 @@ function bornholm_is_login_page() {
  *
  * @return bool
  */
-function bornholm_is_wp_comments_post() {
+function chilli_is_wp_comments_post() {
 	return in_array( $GLOBALS['pagenow'], array( 'wp-comments-post.php' ) );
 }
 
 /**
  * Adds theme support for custom header, feed links, title tag, post formats, HTML5 and post thumbnails
  */
-function bornholm_add_theme_support() {
+function chilli_add_theme_support() {
 	add_theme_support( 'custom-header' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
@@ -68,23 +68,23 @@ function bornholm_add_theme_support() {
 	add_theme_support( 'post-thumbnails' );
 }
 
-add_action( 'after_setup_theme', 'bornholm_add_theme_support' );
+add_action( 'after_setup_theme', 'chilli_add_theme_support' );
 
 /**
  * Registers the menu
  */
-function bornholm_menus() {
+function chilli_menus() {
 	register_nav_menus( array(
-		'header-menu' => __( 'Header Menu', 'bornholm' ),
+		'header-menu' => __( 'Header Menu', 'chillitheme' ),
 	) );
 }
 
-add_action( 'init', 'bornholm_menus' );
+add_action( 'init', 'chilli_menus' );
 
 /**
  * Registers the sidebar
  */
-function bornholm_sidebars() {
+function chilli_sidebars() {
 	register_sidebar( array(
 		'name'          => 'Sidebar',
 		'id'            => 'sidebar-1',
@@ -95,27 +95,27 @@ function bornholm_sidebars() {
 		'after_title'   => '</h3>'
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Gallery Sidebar', 'bornholm' ),
+		'name'          => __( 'Gallery Sidebar', 'chillitheme' ),
 		'id'            => 'sidebar-gallery',
-		'description'   => __( 'This sidebar is shown on single gallery pages', 'bornholm' ),
+		'description'   => __( 'This sidebar is shown on single gallery pages', 'chillitheme' ),
 		'before_widget' => '<div class="widget clearfix %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>'
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area (top)', 'bornholm' ),
+		'name'          => __( 'Footer Widget Area (top)', 'chillitheme' ),
 		'id'            => 'footer-widget-area-top',
-		'description'   => __( 'This widget area is shown on the top of the footer', 'bornholm' ),
+		'description'   => __( 'This widget area is shown on the top of the footer', 'chillitheme' ),
 		'before_widget' => '<div class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>'
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area (bottom)', 'bornholm' ),
+		'name'          => __( 'Footer Widget Area (bottom)', 'chillitheme' ),
 		'id'            => 'footer-widget-area-bottom',
-		'description'   => __( 'This widget area is shown on the bottom of the footer', 'bornholm' ),
+		'description'   => __( 'This widget area is shown on the bottom of the footer', 'chillitheme' ),
 		'before_widget' => '<div class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -123,14 +123,14 @@ function bornholm_sidebars() {
 	) );
 }
 
-add_action( 'widgets_init', 'bornholm_sidebars' );
+add_action( 'widgets_init', 'chilli_sidebars' );
 
 /**
  * Displays navigation for paginated posts
  *
  * @return string Formatted output in HTML.
  */
-function bornholm_paginated_posts_navigation() {
+function chilli_paginated_posts_navigation() {
 	wp_link_pages( array(
 		'before'      => '<ul class="page-link">',
 		'after'       => '</ul>',
@@ -144,8 +144,8 @@ function bornholm_paginated_posts_navigation() {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_the_content() {
-	$text = _x( 'Continue reading “%s”', 's = post title', 'bornholm' );
+function chilli_the_content() {
+	$text = _x( 'Continue reading “%s”', 's = post title', 'chillitheme' );
 	$more = sprintf( $text, esc_html( get_the_title() ) );
 	the_content( $more );
 }
@@ -157,18 +157,18 @@ function bornholm_the_content() {
  *
  * @return mixed
  */
-function bornholm_remove_more_link_scroll( $link ) {
+function chilli_remove_more_link_scroll( $link ) {
 	$link = preg_replace( '|#more-[0-9]+|', '', $link );
 
 	return $link;
 }
 
-add_filter( 'the_content_more_link', 'bornholm_remove_more_link_scroll' );
+add_filter( 'the_content_more_link', 'chilli_remove_more_link_scroll' );
 
 /**
  * Adds the scripts and styles to the header
  */
-function bornholm_scripts_styles() {
+function chilli_scripts_styles() {
 	/*
 	 * Adds JavaScript to pages with the comment form to support
 	 * sites with threaded comments (when in use).
@@ -178,18 +178,18 @@ function bornholm_scripts_styles() {
 	}
 
 
-	wp_enqueue_script( 'bornholm-menu', get_template_directory_uri() . '/js/menu.js', array( 'jquery' ), false, true );
-	wp_enqueue_script( 'bornholm-lightbox', get_template_directory_uri() . '/js/lightbox.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'chilli-menu', get_template_directory_uri() . '/js/menu.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'chilli-lightbox', get_template_directory_uri() . '/js/lightbox.js', array( 'jquery' ), false, true );
 
 	/*
 	 * Loads our main stylesheet.
 	 */
-	wp_enqueue_style( 'bornholm-style', get_template_directory_uri() . '/css/bornholm.css', array(), null );
+	wp_enqueue_style( 'chilli-style', get_template_directory_uri() . '/css/bornholm.css', array(), null );
 
-	wp_enqueue_style( 'bornholm-fonts', '//fonts.googleapis.com/css?family=Roboto:300,300italic,500,500italic', array(), null );
+	wp_enqueue_style( 'chilli-fonts', '//fonts.googleapis.com/css?family=Roboto:300,300italic,500,500italic', array(), null );
 }
 
-add_action( 'wp_enqueue_scripts', 'bornholm_scripts_styles' );
+add_action( 'wp_enqueue_scripts', 'chilli_scripts_styles' );
 
 /**
  * Fetch image post objects for all gallery images in a post.
@@ -198,7 +198,7 @@ add_action( 'wp_enqueue_scripts', 'bornholm_scripts_styles' );
  *
  * @return array
  */
-function bornholm_get_gallery_images( $post_id ) {
+function chilli_get_gallery_images( $post_id ) {
 
 	$post = get_post( $post_id );
 
@@ -257,7 +257,7 @@ function bornholm_get_gallery_images( $post_id ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_the_post_header( $heading, $post ) {
+function chilli_the_post_header( $heading, $post ) {
 	if ( has_post_thumbnail() ) {
 		if ( ! is_single() ) { ?>
 			<a href="<?php esc_url( the_permalink() ); ?>">
@@ -273,7 +273,7 @@ function bornholm_the_post_header( $heading, $post ) {
 			</a>
 		<?php }
 	} else {
-		bornholm_post_title( $heading, $post );
+		chilli_post_title( $heading, $post );
 	}
 }
 
@@ -284,7 +284,7 @@ function bornholm_the_post_header( $heading, $post ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_post_title( $heading, $post ) {
+function chilli_post_title( $heading, $post ) {
 	echo '<' . $heading . ' class="entry-title">';
 	if ( ! is_single() ) { ?>
 		<a href="<?php esc_url( the_permalink() ); ?>">
@@ -305,11 +305,11 @@ function bornholm_post_title( $heading, $post ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_gallery_header( $heading, $images, $size, $post ) {
+function chilli_gallery_header( $heading, $images, $size, $post ) {
 	if ( $images ) {
-		bornholm_gallery_title( $heading, $images, $size, $post );
+		chilli_gallery_title( $heading, $images, $size, $post );
 	} else {
-		bornholm_post_title( $heading, $post );
+		chilli_post_title( $heading, $post );
 	}
 }
 
@@ -320,8 +320,8 @@ function bornholm_gallery_header( $heading, $images, $size, $post ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_gallery_title( $heading, $images, $size, $post ) {
-	if ( $size != 'bornholm_large_gallery_image_for_single_view' ) { ?>
+function chilli_gallery_title( $heading, $images, $size, $post ) {
+	if ( $size != 'chilli_large_gallery_image_for_single_view' ) { ?>
 		<a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>">
 	<?php }
 	if ( ! $heading == '' ) {
@@ -329,8 +329,8 @@ function bornholm_gallery_title( $heading, $images, $size, $post ) {
 		echo esc_html( $post->post_title );
 		echo '</' . $heading . '>';
 	}
-	bornholm_gallery_featured_image( $size, $images, $post );
-	if ( $size != 'bornholm_large_gallery_image_for_single_view' ) { ?>
+	chilli_gallery_featured_image( $size, $images, $post );
+	if ( $size != 'chilli_large_gallery_image_for_single_view' ) { ?>
 		</a>
 	<?php }
 }
@@ -342,7 +342,7 @@ function bornholm_gallery_title( $heading, $images, $size, $post ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_gallery_featured_image( $size, $images, $post ) {
+function chilli_gallery_featured_image( $size, $images, $post ) {
 	$image         = array_shift( $images );
 	$image_img_tag = wp_get_attachment_image( $image->ID, $size ); ?>
 	<figure class="gallery-thumb clearfix">
@@ -362,14 +362,14 @@ function bornholm_gallery_featured_image( $size, $images, $post ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_small_gallery_thumbnails( $size, $images, $number_of_small_images ) {
+function chilli_small_gallery_thumbnails( $size, $images, $number_of_small_images ) {
 	global $post;
 	if ( $images ) {
 		$counter = 0;
 		if ( has_post_thumbnail() ) {
-			bornholm_thumbnails_from_gallery_with_post_thumbnail( $post, $images, $counter, $size, $number_of_small_images );
+			chilli_thumbnails_from_gallery_with_post_thumbnail( $post, $images, $counter, $size, $number_of_small_images );
 		} else {
-			bornholm_thumbnails_from_gallery_without_post_thumbnail( $images, $counter, $size, $number_of_small_images );
+			chilli_thumbnails_from_gallery_without_post_thumbnail( $images, $counter, $size, $number_of_small_images );
 		}
 	}
 }
@@ -382,7 +382,7 @@ function bornholm_small_gallery_thumbnails( $size, $images, $number_of_small_ima
  *
  * @return string Formatted output in HTML
  */
-function bornholm_thumbnails_from_gallery_with_post_thumbnail( $post, $small_images, $counter, $size, $number_of_small_images ) {
+function chilli_thumbnails_from_gallery_with_post_thumbnail( $post, $small_images, $counter, $size, $number_of_small_images ) {
 	$post_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) );
 	$image_list     = '<ul class="gallery-thumbs clearfix">';
 	foreach ( $small_images as $single_image ) {
@@ -407,7 +407,7 @@ function bornholm_thumbnails_from_gallery_with_post_thumbnail( $post, $small_ima
  *
  * @return string Formatted output in HTML
  */
-function bornholm_thumbnails_from_gallery_without_post_thumbnail( $small_images, $counter, $size, $number_of_small_images ) {
+function chilli_thumbnails_from_gallery_without_post_thumbnail( $small_images, $counter, $size, $number_of_small_images ) {
 	$image_list = '<ul class="gallery-thumbs clearfix">';
 	foreach ( $small_images as $single_image ) {
 		if ( $counter == 0 ) {
@@ -431,14 +431,14 @@ function bornholm_thumbnails_from_gallery_without_post_thumbnail( $small_images,
  *
  * @return string Formatted output in HTML
  */
-function bornholm_gallery_image_number( $images ) {
+function chilli_gallery_image_number( $images ) {
 	if ( $images ) {
 		$total_images = count( $images ); ?>
 		<p>
 			<em><?php
 				printf( _n( 'This gallery contains <a %1$s>%2$s photo</a>.',
 					'This gallery contains <a %1$s>%2$s photos</a>.',
-					$total_images, 'bornholm' ),
+					$total_images, 'chillitheme' ),
 					'href="' . esc_url( get_permalink() )
 					. '"',
 					number_format_i18n( $total_images ) );
@@ -455,8 +455,8 @@ function bornholm_gallery_image_number( $images ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_alternative_front_page_more_link( $cat ) {
-	$text = _x( 'Display all galleries from “%s”', 's = category title', 'bornholm' );
+function chilli_alternative_front_page_more_link( $cat ) {
+	$text = _x( 'Display all galleries from “%s”', 's = category title', 'chillitheme' );
 	$more = sprintf( $text, esc_html( $cat->name ) ); ?>
 	<article class="read-more">
 		<a href="<?php echo esc_url( get_category_link( $cat->cat_ID ) ) ?>"><?php echo $more ?></a>
@@ -468,9 +468,9 @@ function bornholm_alternative_front_page_more_link( $cat ) {
  *
  * @param $post
  */
-function bornholm_alternative_front_page_gallery_teaser( $post ) { ?>
+function chilli_alternative_front_page_gallery_teaser( $post ) { ?>
 	<article>
-		<?php $images_child                                   = bornholm_get_gallery_images( $post->ID );
+		<?php $images_child                                   = chilli_get_gallery_images( $post->ID );
 		$hide_gallery_titles_on_alternative_front_page        = get_theme_mod( 'hide_gallery_titles_on_alternative_front_page' );
 		$hide_gallery_titles_for_galleries_from_same_category = get_theme_mod( 'hide_gallery_titles_for_galleries_from_same_category' );
 		$hide_gallery_titles_on_portfolio_page                = get_theme_mod( 'hide_gallery_titles_on_portfolio_page' );
@@ -479,9 +479,9 @@ function bornholm_alternative_front_page_gallery_teaser( $post ) { ?>
 		     ( $hide_gallery_titles_for_galleries_from_same_category == 1 && get_post_format() == 'gallery' && is_single() ) ||
 		     $hide_gallery_titles_on_portfolio_page == 1 && $page_template == 'portfolio-page.php'
 		) {
-			bornholm_gallery_header( '', $images_child, 'thumbnail', $post );
+			chilli_gallery_header( '', $images_child, 'thumbnail', $post );
 		} else {
-			bornholm_gallery_header( 'h3', $images_child, 'thumbnail', $post );
+			chilli_gallery_header( 'h3', $images_child, 'thumbnail', $post );
 		} ?>
 	</article>
 <?php }
@@ -493,7 +493,7 @@ function bornholm_alternative_front_page_gallery_teaser( $post ) { ?>
  *
  * @return string
  */
-function bornholm_get_the_category_ids( $post_id ) {
+function chilli_get_the_category_ids( $post_id ) {
 	$category_ids = get_the_category( $post_id );
 	$counter      = 0;
 	foreach ( $category_ids as $category_id ) {
@@ -515,7 +515,7 @@ function bornholm_get_the_category_ids( $post_id ) {
  *
  * @return array
  */
-function bornholm_galleries_args( $cat, $exclude_id ) {
+function chilli_galleries_args( $cat, $exclude_id ) {
 	$args = array(
 		'category__in' => $cat->cat_ID,
 		'exclude'      => "$exclude_id", // for the sidebar on a single gallery
@@ -544,8 +544,8 @@ function bornholm_galleries_args( $cat, $exclude_id ) {
  *
  * @return string Formatted output in HTML
  */
-function bornholm_get_galleries_from_category( $cat, $exclude_id, $number_of_galleries, $heading, $title, $show_child_category_hierarchy ) {
-	$galleries_args = bornholm_galleries_args( $cat, $exclude_id );
+function chilli_get_galleries_from_category( $cat, $exclude_id, $number_of_galleries, $heading, $title, $show_child_category_hierarchy ) {
+	$galleries_args = chilli_galleries_args( $cat, $exclude_id );
 	$galleries      = get_posts( $galleries_args );
 	if ( $galleries ) {
 		$total_galleries = count( $galleries );
@@ -554,9 +554,9 @@ function bornholm_get_galleries_from_category( $cat, $exclude_id, $number_of_gal
 		<?php if ( $title != '' ) { ?>
 			<<?php echo $heading; ?> class="category-title"><?php echo $title; ?></<?php echo $heading; ?>>
 		<?php } ?>
-		<?php bornholm_loop_galleries_from_category( $galleries, $total_galleries, $number_of_galleries, $gallery_counter, $cat );
+		<?php chilli_loop_galleries_from_category( $galleries, $total_galleries, $number_of_galleries, $gallery_counter, $cat );
 		if ( $show_child_category_hierarchy ) {
-			bornholm_get_child_category_galleries( $cat, $number_of_galleries, $exclude_id, $title, $heading );
+			chilli_get_child_category_galleries( $cat, $number_of_galleries, $exclude_id, $title, $heading );
 		} ?>
 		</div>
 	<?php }
@@ -569,12 +569,12 @@ function bornholm_get_galleries_from_category( $cat, $exclude_id, $number_of_gal
  *
  * @return string Formatted output in HTML
  */
-function bornholm_get_child_category_galleries( $cat, $number_of_galleries, $exclude_id, $title, $heading ) {
+function chilli_get_child_category_galleries( $cat, $number_of_galleries, $exclude_id, $title, $heading ) {
 	$category_children = get_term_children( $cat->term_id, 'category' );
 	if ( $category_children ) {
 		foreach ( $category_children as $cat_child ) {
 			$cat_child            = get_category( $cat_child );
-			$child_galleries_args = bornholm_galleries_args( $cat_child, $exclude_id );
+			$child_galleries_args = chilli_galleries_args( $cat_child, $exclude_id );
 			$child_galleries      = get_posts( $child_galleries_args );
 			if ( $child_galleries ) {
 				$total_child_galleries = count( $child_galleries );
@@ -584,7 +584,7 @@ function bornholm_get_child_category_galleries( $cat, $number_of_galleries, $exc
 					$title = $cat_child->name; ?>
 					<<?php echo $heading; ?>><?php echo $title; ?></<?php echo $heading; ?>>
 				<?php }
-				bornholm_loop_galleries_from_category( $child_galleries, $total_child_galleries, $number_of_galleries, $gallery_child_counter, $cat_child ); ?>
+				chilli_loop_galleries_from_category( $child_galleries, $total_child_galleries, $number_of_galleries, $gallery_child_counter, $cat_child ); ?>
 				</div>
 			<?php }
 		}
@@ -599,18 +599,18 @@ function bornholm_get_child_category_galleries( $cat, $number_of_galleries, $exc
  *
  * @return string Formatted output in HTML
  */
-function bornholm_loop_galleries_from_category( $galleries, $total_galleries, $number_of_galleries, $gallery_counter, $cat ) {
+function chilli_loop_galleries_from_category( $galleries, $total_galleries, $number_of_galleries, $gallery_counter, $cat ) {
 	foreach ( $galleries as $post ) {
 		if ( $number_of_galleries > 0 ) {
 			if ( $total_galleries > $number_of_galleries ) {
 				$gallery_counter ++;
 				if ( $gallery_counter > $number_of_galleries ) {
-					bornholm_alternative_front_page_more_link( $cat );
+					chilli_alternative_front_page_more_link( $cat );
 					break;
 				}
 			}
 		}
-		bornholm_alternative_front_page_gallery_teaser( $post );
+		chilli_alternative_front_page_gallery_teaser( $post );
 	}
 }
 
@@ -619,46 +619,46 @@ function bornholm_loop_galleries_from_category( $galleries, $total_galleries, $n
  *
  * @return string Formatted output in HTML
  */
-function bornholm_footer_meta() { ?>
+function chilli_footer_meta() { ?>
 	<p>
-		<a href="<?php esc_url( the_permalink() ); ?>"><?php echo sprintf( _x( '%1$s @ %2$s', '1 = date, 2 = time', 'bornholm' ), get_the_date(), get_the_time() ); ?></a>
+		<a href="<?php esc_url( the_permalink() ); ?>"><?php echo sprintf( _x( '%1$s @ %2$s', '1 = date, 2 = time', 'chillitheme' ), get_the_date(), get_the_time() ); ?></a>
 		<?php
 		$show_sep = true;
-		bornholm_show_seperator( $show_sep );
+		chilli_show_seperator( $show_sep );
 		$show_sep      = false;
-		$category_list = get_the_category_list( _x( ', ', 'term delimiter', 'bornholm' ) );
+		$category_list = get_the_category_list( _x( ', ', 'term delimiter', 'chillitheme' ) );
 		if ( $category_list ) {
-			bornholm_category_list( $category_list );
+			chilli_category_list( $category_list );
 			$show_sep = true;
 		}
-		$tag_list = get_the_tag_list( '', _x( ', ', 'term delimiter', 'bornholm' ) );
+		$tag_list = get_the_tag_list( '', _x( ', ', 'term delimiter', 'chillitheme' ) );
 		if ( $tag_list ) {
-			bornholm_show_seperator( $show_sep );
-			bornholm_tag_list( $tag_list );
+			chilli_show_seperator( $show_sep );
+			chilli_tag_list( $tag_list );
 			$show_sep = true;
 		}
-		bornholm_show_seperator( $show_sep ); ?>
+		chilli_show_seperator( $show_sep ); ?>
 		<span class="author">
-            <?php _e( 'Author:', 'bornholm' ); ?><?php the_author(); ?>
+            <?php _e( 'Author:', 'chillitheme' ); ?><?php the_author(); ?>
         </span>
 		<?php
 		$show_sep = true;
-		if ( get_bornholm_comment_count() != 0 ) {
-			bornholm_show_seperator( $show_sep ); ?>
+		if ( get_chilli_comment_count() != 0 ) {
+			chilli_show_seperator( $show_sep ); ?>
 			<a href="<?php echo esc_url( get_the_permalink() ) . "#comments-title"; ?>">
-				<?php echo get_bornholm_comment_count(); ?>
+				<?php echo get_chilli_comment_count(); ?>
 			</a>
 			<?php $show_sep = true;
 		}
 
-		if ( get_bornholm_trackback_count() != 0 ) {
-			bornholm_show_seperator( $show_sep ); ?>
+		if ( get_chilli_trackback_count() != 0 ) {
+			chilli_show_seperator( $show_sep ); ?>
 			<a href="<?php echo esc_url( get_the_permalink() ) . "#trackbacks-title"; ?>">
-				<?php echo get_bornholm_trackback_count(); ?>
+				<?php echo get_chilli_trackback_count(); ?>
 			</a>
 
 		<?php }
-		edit_post_link( __( 'Edit', 'bornholm' ), '<span class="edit-link"> ·  ', '</span>' ); ?>
+		edit_post_link( __( 'Edit', 'chillitheme' ), '<span class="edit-link"> ·  ', '</span>' ); ?>
 
 	</p>
 <?php }
@@ -670,9 +670,9 @@ function bornholm_footer_meta() { ?>
  *
  * @return string Formatted output in HTML
  */
-function bornholm_category_list( $category_list ) { ?>
+function chilli_category_list( $category_list ) { ?>
 	<span class="cat-links">
-        <?php _e( 'Posted in ', 'bornholm' );
+        <?php _e( 'Posted in ', 'chillitheme' );
         echo $category_list; ?>
     </span>
 <?php }
@@ -684,9 +684,9 @@ function bornholm_category_list( $category_list ) { ?>
  *
  * @return string Formatted output in HTML
  */
-function bornholm_tag_list( $tag_list ) { ?>
+function chilli_tag_list( $tag_list ) { ?>
 	<span class="tag-links">
-        <?php _e( 'Tagged ', 'bornholm' );
+        <?php _e( 'Tagged ', 'chillitheme' );
         echo $tag_list; ?>
     </span>
 <?php }
@@ -698,7 +698,7 @@ function bornholm_tag_list( $tag_list ) { ?>
  *
  * @return string Formatted output in HTML
  */
-function bornholm_show_seperator( $show_sep ) {
+function chilli_show_seperator( $show_sep ) {
 	if ( $show_sep ) { ?>
 		<span class="sep"> · </span>
 	<?php }
@@ -708,11 +708,11 @@ function bornholm_show_seperator( $show_sep ) {
  * Template for comments and pingbacks.
  *
  * To override this walker in a child theme without modifying the comments template
- * simply create your own bornholm_comment(), and that function will be used instead.
+ * simply create your own chilli_comment(), and that function will be used instead.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
-function bornholm_comment( $comment, $args, $depth ) {
+function chilli_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
@@ -720,7 +720,7 @@ function bornholm_comment( $comment, $args, $depth ) {
 			// Display trackbacks differently than normal comments.
 			?>
 			<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-			<p><?php _e( 'Trackback:', 'bornholm' ); ?><?php esc_url( comment_author_link() ); ?><?php esc_url( edit_comment_link( __( '(Edit)', 'bornholm' ), '<span class="edit-link">', '</span>' ) ); ?></p>
+			<p><?php _e( 'Trackback:', 'chillitheme' ); ?><?php esc_url( comment_author_link() ); ?><?php esc_url( edit_comment_link( __( '(Edit)', 'chillitheme' ), '<span class="edit-link">', '</span>' ) ); ?></p>
 			<?php
 			break;
 		default :
@@ -739,25 +739,25 @@ function bornholm_comment( $comment, $args, $depth ) {
 					<?php printf( '<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
 						esc_url( get_comment_link( $comment->comment_ID ) ),
 						get_comment_time( 'c' ),
-						sprintf( _x( '%1$s @ %2$s', '1=date 2=time', 'bornholm' ), get_comment_date(), get_comment_time() )
+						sprintf( _x( '%1$s @ %2$s', '1=date 2=time', 'chillitheme' ), get_comment_date(), get_comment_time() )
 					); ?>
 				</header>
 
 				<?php if ( '0' == $comment->comment_approved ) { ?>
 					<p class="comment-awaiting-moderation">
-						<?php _e( 'Your comment is awaiting moderation.', 'bornholm' ); ?>
+						<?php _e( 'Your comment is awaiting moderation.', 'chillitheme' ); ?>
 					</p>
 				<?php } ?>
 
 				<section class="comment-content comment">
 					<?php comment_text(); ?>
-					<?php esc_url( edit_comment_link( __( 'Edit', 'bornholm' ), '<p class="edit-link">', '</p>' ) ); ?>
+					<?php esc_url( edit_comment_link( __( 'Edit', 'chillitheme' ), '<p class="edit-link">', '</p>' ) ); ?>
 				</section>
 
 				<div class="reply">
 					<?php esc_url( comment_reply_link(
 						array(
-							'reply_text' => __( 'Reply', 'bornholm' ),
+							'reply_text' => __( 'Reply', 'chillitheme' ),
 							'depth'      => $depth,
 							'max_depth'  => $args['max_depth']
 						)
@@ -774,7 +774,7 @@ function bornholm_comment( $comment, $args, $depth ) {
  *
  * @return string
  */
-function get_bornholm_comment_count() {
+function get_chilli_comment_count() {
 	global $post;
 	$the_post_id = $post->ID;
 	global $wpdb;
@@ -783,11 +783,11 @@ AND comment_post_ID = %d AND comment_approved = %d", ' ', $the_post_id, 1 ) );
 	if ( $co_number == 0 ) {
 		return $co_number;
 	} elseif ( $co_number == 1 ) {
-		$co_number = $co_number . __( ' Comment', 'bornholm' );
+		$co_number = $co_number . __( ' Comment', 'chillitheme' );
 
 		return $co_number;
 	} else {
-		$co_number = $co_number . __( ' Comments', 'bornholm' );
+		$co_number = $co_number . __( ' Comments', 'chillitheme' );
 
 		return $co_number;
 	}
@@ -799,7 +799,7 @@ AND comment_post_ID = %d AND comment_approved = %d", ' ', $the_post_id, 1 ) );
  *
  * @return string
  */
-function get_bornholm_trackback_count() {
+function get_chilli_trackback_count() {
 	global $post;
 	$the_post_id = $post->ID;
 	global $wpdb;
@@ -808,11 +808,11 @@ AND comment_post_ID = %d AND comment_approved = %d", ' ', $the_post_id, 1 ) );
 	if ( $tb_number == 0 ) {
 		return $tb_number;
 	} elseif ( $tb_number == 1 ) {
-		$tb_number = $tb_number . __( ' Trackback', 'bornholm' );
+		$tb_number = $tb_number . __( ' Trackback', 'chillitheme' );
 
 		return $tb_number;
 	} else {
-		$tb_number = $tb_number . __( ' Trackbacks', 'bornholm' );
+		$tb_number = $tb_number . __( ' Trackbacks', 'chillitheme' );
 
 		return $tb_number;
 	}
@@ -823,11 +823,11 @@ require get_template_directory() . '/inc/class-recent-galleries.php';
 require get_template_directory() . '/inc/class-featured-galleries.php';
 
 
-function register_bornholm_widgets() {
-	register_widget( 'Bornholm_Recent_Galleries' );
-	register_widget( 'Bornholm_Featured_Galleries' );
+function register_chilli_widgets() {
+	register_widget( 'Chilli_Recent_Galleries' );
+	register_widget( 'Chilli_Featured_Galleries' );
 }
 
-add_action( 'widgets_init', 'register_bornholm_widgets' );
+add_action( 'widgets_init', 'register_chilli_widgets' );
 
 require get_template_directory() . '/inc/customizer.php';
