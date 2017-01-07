@@ -1,0 +1,53 @@
+/******************************
+Widgets
+*******************************/
+
+.widget {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 2.2em;
+}
+
+#sidebar .widget {
+    padding: 0 16px;
+}
+
+#sidebar .widget:first-of-type {
+    margin-top: 0;
+}
+
+.widget .widget-title {
+    margin-top: 0;
+}
+
+.widget a:first-of-type .entry-title {
+    margin-top: 0;
+}
+
+#sidebar .widget_recent_galleries,
+#sidebar .widget_featured_galleries {
+    padding: 0;
+}
+
+.widget_recent_galleries div,
+.widget_featured_galleries div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    max-width: 100%;
+    padding: .2em;
+}
+
+.widget_recent_galleries a,
+.widget_featured_galleries a {
+    display: block;
+    float: left;
+    max-width: 100%;
+}
+
+.widget .gallery-thumb {
+    margin: 0;
+}

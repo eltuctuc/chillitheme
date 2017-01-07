@@ -1,0 +1,92 @@
+/******************************
+Header
+*******************************/
+
+#header {
+    margin-bottom: 3.125em;
+    padding-top: 2em;
+}
+
+#header div {
+    float: left;
+    max-width: 65%;
+    margin-left: 16px;
+}
+
+#header .site-title {
+    font-size: 1.4em;
+    margin: 0;
+}
+
+#header .blog-description {
+    font-size: 1em;
+    font-style: italic;
+    margin: 0;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+}
+
+.menu-button {
+    display: none;
+}
+
+#header nav ul {
+    margin-top: 0;
+    padding-left: 0;
+}
+
+#header nav li {
+    list-style-type: none;
+}
+
+@media screen and ( max-width: 49.99em ) {
+    .js .menu-button {
+        display: block;
+        font-size: 2em;
+    }
+
+    .js .show-menu {
+        float: right;
+        padding: .8em;
+    }
+
+    .js .hide-menu {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    #header nav {
+        text-align: center;
+    }
+
+    .js #header nav {
+        height: 0;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: -200px;
+        width: 100%;
+    }
+
+    .active-menu #header nav {
+        background: #ffffff;
+        background: rgba(255, 255, 255, 0.95);
+        height: auto;
+        overflow: visible;
+        top: 0;
+        -moz-transition: top 0.5s ease 0s;
+        -webkit-transition: top 0.5s ease 0s;
+        transition: top 0.5s ease 0s;
+        z-index: 999;
+    }
+
+    #header nav ul li {
+        margin-bottom: 4px;
+        margin-top: 4px;
+        padding-bottom: 4px;
+        padding-top: 4px;
+    }
+}
