@@ -1,18 +1,14 @@
-<?php get_header(); ?>
-	<main role="main">
-		<?php if ( have_posts() ) { ?>
-			<header class="archive-header">
-				<h1>
-					<?php printf( __( 'Search Results for: %s', 'bornholm' ), esc_html( get_search_query() ) ); ?>
-				</h1>
-			</header>
-			<?php
-			while ( have_posts() ) {
-				the_post();
-				get_template_part( 'content', get_post_format() );
-			}
-		}
-		the_posts_pagination( array( 'type' => 'list' ) ); ?>
-	</main>
-<?php get_sidebar();
-get_footer();
+<?php get_template_part('templates/page', 'header'); ?>
+
+<?php if (!have_posts()) : ?>
+  <div class="alert alert-warning">
+    <?php _e('Sorry, no results were found.', 'sage'); ?>
+  </div>
+  <?php get_search_form(); ?>
+<?php endif; ?>
+
+<?php while (have_posts()) : the_post(); ?>
+  <?php get_template_part('templates/content', 'search'); ?>
+<?php endwhile; ?>
+
+<?php the_posts_navigation(); ?>
